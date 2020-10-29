@@ -37,8 +37,20 @@ async function findAll() {
     });
 }
 
+async function addMedicine(data) {
+  return medicinesModel.create(data)
+    .then((result) => {
+      return result;
+    })
+    .catch((err) => {
+      console.log(err);
+      throw err;
+    });
+}
+
 module.exports = {
   model: medicinesModel,
   findById,
-  findAll
+  findAll,
+  addMedicine
 };
