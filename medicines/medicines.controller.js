@@ -12,7 +12,7 @@ module.exports.getMedicines = async(req, res) => {
 };
 
 module.exports.getMedicineByName = async(req, res) => {
-  const medName = req.query.name;
+  const medName = req.params.name;
   if (!medName) {
     return res.status(400).send({ error: 'Medicine name is missing in query params'});
   }
