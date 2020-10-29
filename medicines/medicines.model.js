@@ -48,9 +48,22 @@ async function addMedicine(data) {
     });
 }
 
+async function getMedicineByName(name) {
+  return medicinesModel.findOne({name})
+    .then((result) => {
+      delete result.__v;
+      return result;
+    })
+    .catch((err) => {
+      console.log(err);
+      throw err;
+    });
+}
+
 module.exports = {
   model: medicinesModel,
   findById,
   findAll,
-  addMedicine
+  addMedicine,
+  getMedicineByName
 };
