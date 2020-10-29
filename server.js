@@ -6,6 +6,11 @@ const port = PORT || 3000;
 
 app.use(express.json());
 
+app.set('views', __dirname + '/views'); // general config
+app.set('view engine', 'ejs');
+//render css files
+app.use(express.static("public"));
+
 // import modules
 const medicineModule = require('./medicines/medicines.routes');
 
@@ -14,7 +19,7 @@ app.listen(port, () => {
 })
 
 app.get('/', (req, res) => {
-  res.send('App is Running!');
+  res.render("home");
 })
 
 app.use('/medicines', medicineModule);
